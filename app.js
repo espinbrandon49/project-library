@@ -1,3 +1,6 @@
+//Why does the stored library disappear if I refresh and addBookToLibrary()
+//Any hints on how to overcome this would be much appreciated
+
 const display = document.getElementById('display')
 const titleInput = document.getElementById('titleInput')
 const authorInput = document.getElementById('authorInput')
@@ -6,14 +9,10 @@ const yesInput = document.getElementById('yesInput')
 const noInput = document.getElementById('noInput')
 
 const addBook = document.getElementById('addBook')
-addBook.addEventListener('click', addBooktoLibrary)
-
+const submit = document.getElementById('submit')
 const clearAll = document.getElementById('removeAll')
-clearAll.addEventListener('click', () => localStorage.clear())
 
-let myLibrary = [
-
-]
+let myLibrary = []
 
 function Book(title, author, pages, read) {
   this.title = title
@@ -24,36 +23,27 @@ function Book(title, author, pages, read) {
 }
 
 function addBooktoLibrary() {
-  let newBook = new Book(titleInput.value, authorInput.value, pagesInput.value, yesInput.value)
+  const readBook = () => yesInput.checked == true ? 'yes' : 'no'
+  let title = titleInput.value
+  let author = authorInput.value
+  let pages = pagesInput.value
+  let read = readBook()
+  let newBook = new Book(title, author, pages, read)
   myLibrary.push(newBook)
-
-  let storedLibrary = localStorage.setItem('storedLibrary', JSON.stringify(myLibrary))
-  let book = JSON.parse(localStorage.getItem('storedLibrary'))
-
-  for (let i = 0; i < book.length; i++) {
-    let newDiv = document.createElement('div')
-    newDiv.classList.add('addBookClassName')
-    newDiv.textContent = book[i].card
-    display.appendChild(newDiv)
-  }
-
-  //console.log(newBook)
+  console.log(newBook)
   console.log(myLibrary)
+
+  setLibrary()
 }
 
+const setLibrary = function () {
+  localStorage.setItem('library', JSON.stringify(myLibrary))
+}
 
+const getLibrary = function () {
+  myLibrary = JSON.parse(localStorage.getItem('library'))
+}
 
-//let parseLibrary = JSON.parse(stringLibrary)
-//console.log(parseLibrary.d)
-
-
-/*
-function stringyy() {
-  let array = []
-  for (let i = 0; i < myLibrary.length; i++) {
-    array.push(JSON.parse(JSON.stringify(myLibrary[i])))
-  }
-  console.log(array)
-  return array
-}*/
-
+addBook.addEventListener('click', addBooktoLibrary)
+//submit.addEventListener('click', setLibrary)
+clearAll.addEventListener('click', () => localStorage.clear())
