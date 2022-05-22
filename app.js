@@ -1,4 +1,5 @@
-//Why does the stored library disappear if I refresh and addBookToLibrary()
+//Why does the myLibrary in local storage disappear if I refresh and addBookToLibrary()
+
 //Any hints on how to overcome this would be much appreciated
 
 const display = document.getElementById('display')
@@ -7,7 +8,6 @@ const authorInput = document.getElementById('authorInput')
 const pagesInput = document.getElementById('pagesInput')
 const yesInput = document.getElementById('yesInput')
 const noInput = document.getElementById('noInput')
-
 const addBook = document.getElementById('addBook')
 const submit = document.getElementById('submit')
 const clearAll = document.getElementById('removeAll')
