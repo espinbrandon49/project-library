@@ -62,3 +62,5 @@ clearAll.addEventListener('click', () => {
   localStorage.clear();
   location.reload()
 })
+
+
