@@ -36,17 +36,15 @@ const setLibrary = function () {
 
 const getLibrary = function () {
   myLibrary = JSON.parse(localStorage.getItem('library'))
-  for(let i = 0; i < myLibrary.length; i++) {
+  for (let i = 0; i < myLibrary.length; i++) {
     let newDiv = document.createElement('div')
     newDiv.textContent = myLibrary[i].card
     newDiv.classList.add('libraryBook')
 
     let newBtn = document.createElement('button')
-    newBtn.classList.add(`removeBtn${i+1}`)
-    newBtn.addEventListener('click', () => newDiv.style = 'display: none')
-    console.log(`removeBtn${i+1}`)
-    newBtn.textContent='Remove Book' 
-  
+    newBtn.classList.add('removeBtn')
+    newBtn.textContent = 'Remove Book'
+
     newDiv.appendChild(newBtn)
     display.appendChild(newDiv)
   }
