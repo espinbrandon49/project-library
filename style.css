@@ -3,3 +3,6 @@
   margin: 0;
 }
 
+.container > p {
+  width: 300px;
+}
