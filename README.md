@@ -1,5 +1,7 @@
 # project-library
 
-//Why does the myLibrary in local storage disappear if I refresh and addBookToLibrary()
+How do I delete an array item from local storage using the newDiv remove button?
 
-//Any hints on how to overcome this would be much appreciated
+Any hints are appreciated.
+
+Thank you
