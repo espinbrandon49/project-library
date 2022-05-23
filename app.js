@@ -13,7 +13,6 @@ const submit = document.getElementById('submit')
 const clearAll = document.getElementById('removeAll')
 
 let myLibrary = []
-
 function Book(title, author, pages, read) {
   this.title = title
   this.author = author
@@ -32,7 +31,6 @@ function addBooktoLibrary() {
   myLibrary.push(newBook)
   console.log(newBook)
   console.log(myLibrary)
-
   setLibrary()
 }
 
@@ -42,8 +40,25 @@ const setLibrary = function () {
 
 const getLibrary = function () {
   myLibrary = JSON.parse(localStorage.getItem('library'))
+
+  for(let i = 0; i < myLibrary.length; i++) {
+    let newDiv = document.createElement('div')
+    newDiv.classList.add('libraryBook') 
+    newDiv.textContent = myLibrary[i].card
+    display.appendChild(newDiv)
+  }
+  console.log(myLibrary)
 }
 
+getLibrary()
+
+
+
+
 addBook.addEventListener('click', addBooktoLibrary)
-//submit.addEventListener('click', setLibrary)
+//submit.addEventListener('click', setLibrary) auto refresh browser to get book
 clearAll.addEventListener('click', () => localStorage.clear())
+
+
+
+
