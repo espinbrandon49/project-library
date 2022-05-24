@@ -7,6 +7,7 @@ const noInput = document.getElementById('noInput')
 const addBook = document.getElementById('addBook')
 const clearAll = document.getElementById('removeAll')
 const removeBtn = document.getElementsByClassName('removeBtn')
+const readBtn = document.getElementsByClassName('readBtn')
 
 let myLibrary = []
 
@@ -42,11 +43,16 @@ const getLibrary = function () {
     newDiv.classList.add('libraryBook')
     newDiv.setAttribute('data-newdiv', `${i}`)
 
-    let newBtn = document.createElement('button')
-    newBtn.classList.add('removeBtn')
-    newBtn.textContent = 'Remove Book'
+    let readBtn = document.createElement('button')
+    readBtn.classList.add('readBtn')
+    readBtn.textContent = 'read'
 
-    newDiv.appendChild(newBtn)
+    let removeBtn = document.createElement('button')
+    removeBtn.classList.add('removeBtn')
+    removeBtn.textContent = 'Remove Book'
+
+    newDiv.appendChild(readBtn)
+    newDiv.appendChild(removeBtn)
     display.appendChild(newDiv)
   }
 }
@@ -57,6 +63,22 @@ if (localStorage.length == 0) {
 } else {
   getLibrary()
 }
+
+const readBook = function () {
+  for (let i = 0; i< readBtn.length; i++) {
+    readBtn[i].addEventListener('click',  () => {
+      (myLibrary[i].read) = 'yes'
+      myLibrary[i].card = myLibrary[i].card 
+      console.log(myLibrary[i].card)
+      console.log(myLibrary[i].read)
+      console.log(myLibrary[i])
+
+      setLibrary()
+      //location.reload()
+    })
+  }
+}
+readBook()
 
 const remove = function () {
   for (let i = 0; i < removeBtn.length; i++) {
@@ -74,3 +96,6 @@ clearAll.addEventListener('click', () => {
   localStorage.clear();
   location.reload()
 })
+
+console.log(myLibrary)
+//*BUG what if they do have a local storage already?
