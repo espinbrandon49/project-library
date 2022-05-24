@@ -16,7 +16,6 @@ function Book(title, author, pages, read) {
   this.author = author
   this.pages = pages
   this.read = read
-  this.card = `${title} ${author} ${pages} ${read}`
 }
 
 function addBooktoLibrary() {
@@ -37,12 +36,26 @@ const setLibrary = function () {
 
 const getLibrary = function () {
   myLibrary = JSON.parse(localStorage.getItem('library'))
-  
+
   for (let i = 0; i < myLibrary.length; i++) {
     let newDiv = document.createElement('div')
-    newDiv.textContent = myLibrary[i].card
+    let titleDiv = document.createElement('div')
+    let authorDiv = document.createElement('div')
+    let pagesDiv = document.createElement('div')
+    let readDiv = document.createElement('div')
+
     newDiv.classList.add('libraryBook')
     newDiv.setAttribute('data-newdiv', `${i}`)
+
+    titleDiv.classList.add('titleDiv')
+    authorDiv.classList.add('authorDiv')
+    pagesDiv.classList.add('pagesDiv')
+    readDiv.classList.add('readDiv')
+
+    titleDiv.textContent = myLibrary[i].title
+    authorDiv.textContent = myLibrary[i].author
+    pagesDiv.textContent = myLibrary[i].pages
+    readDiv.textContent = myLibrary[i].read
 
     let readBtn = document.createElement('button')
     readBtn.classList.add('readBtn')
@@ -52,6 +65,10 @@ const getLibrary = function () {
     removeBtn.classList.add('removeBtn')
     removeBtn.textContent = 'Remove Book'
 
+    newDiv.appendChild(titleDiv)
+    newDiv.appendChild(authorDiv)
+    newDiv.appendChild(pagesDiv)
+    newDiv.appendChild(readDiv)
     newDiv.appendChild(readBtn)
     newDiv.appendChild(removeBtn)
     display.appendChild(newDiv)
@@ -66,11 +83,9 @@ if (!localStorage.library) {
 }
 
 const readBook = function () {
-  for (let i = 0; i< readBtn.length; i++) {
-    readBtn[i].addEventListener('click',  () => {
-      let bookInfo = myLibrary[i]
-      bookInfo.read =  bookInfo.read == 'no' ? 'yes' : 'no'
-      bookInfo.card = bookInfo.title + " " + bookInfo.author + " " + bookInfo.pages + " " + bookInfo.read
+  for (let i = 0; i < readBtn.length; i++) {
+    readBtn[i].addEventListener('click', () => {
+      myLibrary[i].read = myLibrary[i].read == 'no' ? 'yes' : 'no'
       setLibrary()
       location.reload()
     })
