@@ -6,7 +6,7 @@ const yesInput = document.getElementById('yesInput')
 const noInput = document.getElementById('noInput')
 const addBook = document.getElementById('addBook')
 const clearAll = document.getElementById('removeAll')
-const removeBtn = document.getElementsByClassName('')
+const removeBtn = document.getElementsByClassName('removeBtn')
 
 let myLibrary = []
 
@@ -40,6 +40,7 @@ const getLibrary = function () {
     let newDiv = document.createElement('div')
     newDiv.textContent = myLibrary[i].card
     newDiv.classList.add('libraryBook')
+    newDiv.setAttribute('data-newdiv', `${i}`)
 
     let newBtn = document.createElement('button')
     newBtn.classList.add('removeBtn')
@@ -57,10 +58,19 @@ if (localStorage.length == 0) {
   getLibrary()
 }
 
+const remove = function () {
+  for (let i = 0; i < removeBtn.length; i++) {
+    removeBtn[i].addEventListener('click', () => {
+      myLibrary.splice(i, 1)
+      setLibrary()
+      location.reload()
+    })
+  }
+}
+remove()
+
 addBook.addEventListener('click', addBooktoLibrary)
 clearAll.addEventListener('click', () => {
   localStorage.clear();
   location.reload()
 })
-
-
