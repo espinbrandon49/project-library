@@ -67,14 +67,11 @@ if (localStorage.length == 0) {
 const readBook = function () {
   for (let i = 0; i< readBtn.length; i++) {
     readBtn[i].addEventListener('click',  () => {
-      (myLibrary[i].read) = 'yes'
-      myLibrary[i].card = myLibrary[i].card 
-      console.log(myLibrary[i].card)
-      console.log(myLibrary[i].read)
-      console.log(myLibrary[i])
-
+      let bookInfo = myLibrary[i]
+      bookInfo.read = 'yes'
+      bookInfo.card = bookInfo.title + bookInfo.author + bookInfo.pages + bookInfo.read
       setLibrary()
-      //location.reload()
+      location.reload()
     })
   }
 }
