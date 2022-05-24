@@ -37,6 +37,7 @@ const setLibrary = function () {
 
 const getLibrary = function () {
   myLibrary = JSON.parse(localStorage.getItem('library'))
+  
   for (let i = 0; i < myLibrary.length; i++) {
     let newDiv = document.createElement('div')
     newDiv.textContent = myLibrary[i].card
@@ -57,7 +58,7 @@ const getLibrary = function () {
   }
 }
 
-if (localStorage.length == 0) {
+if (!localStorage.library) {
   setLibrary()
   getLibrary()
 } else {
@@ -68,8 +69,8 @@ const readBook = function () {
   for (let i = 0; i< readBtn.length; i++) {
     readBtn[i].addEventListener('click',  () => {
       let bookInfo = myLibrary[i]
-      bookInfo.read = 'yes'
-      bookInfo.card = bookInfo.title + bookInfo.author + bookInfo.pages + bookInfo.read
+      bookInfo.read =  bookInfo.read == 'no' ? 'yes' : 'no'
+      bookInfo.card = bookInfo.title + " " + bookInfo.author + " " + bookInfo.pages + " " + bookInfo.read
       setLibrary()
       location.reload()
     })
@@ -95,4 +96,3 @@ clearAll.addEventListener('click', () => {
 })
 
 console.log(myLibrary)
-//*BUG what if they do have a local storage already?
