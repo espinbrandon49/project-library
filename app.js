@@ -8,6 +8,8 @@ const addBook = document.getElementById('addBook')
 const clearAll = document.getElementById('removeAll')
 const removeBtn = document.getElementsByClassName('removeBtn')
 const readBtn = document.getElementsByClassName('readBtn')
+const addNewBook = document.getElementById('addNewBook')
+const addBookForm = document.getElementById('addBookForm')  
 
 let myLibrary = []
 
@@ -27,6 +29,7 @@ function addBooktoLibrary() {
   let newBook = new Book(title, author, pages, read)
   myLibrary.push(newBook)
   setLibrary()
+  addBookForm.style = 'display: none'
   location.reload()
 }
 
@@ -39,13 +42,13 @@ const getLibrary = function () {
 
   for (let i = 0; i < myLibrary.length; i++) {
     let newDiv = document.createElement('div')
+    newDiv.classList.add('libraryBook')
+    newDiv.setAttribute('data-newdiv', `${i}`)
+
     let titleDiv = document.createElement('div')
     let authorDiv = document.createElement('div')
     let pagesDiv = document.createElement('div')
     let readDiv = document.createElement('div')
-
-    newDiv.classList.add('libraryBook')
-    newDiv.setAttribute('data-newdiv', `${i}`)
 
     titleDiv.classList.add('titleDiv')
     authorDiv.classList.add('authorDiv')
@@ -104,10 +107,17 @@ const remove = function () {
 }
 remove()
 
+addNewBook.addEventListener('click', () => {
+  addBookForm.style = 'display: block'
+})
+
+display.addEventListener('click', () => {
+  addBookForm.style = 'display: none'
+  location.reload()
+})
+
 addBook.addEventListener('click', addBooktoLibrary)
 clearAll.addEventListener('click', () => {
   localStorage.clear();
   location.reload()
 })
-
-console.log(myLibrary)
