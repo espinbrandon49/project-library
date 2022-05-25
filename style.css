@@ -30,7 +30,7 @@ button {
   display: grid;
   height: auto;
   width: minmax(200px);
-  
+
   align-content: stretch;
   background-color: orange;
   border-radius: 7px;
@@ -38,7 +38,7 @@ button {
   grid-template-areas:
     'author pages'
     'title title'
-    'read remove';
+    'read read';
 }
 
 .libraryBookInfo {
@@ -58,12 +58,8 @@ button {
   grid-area: title;
 }
 
-.readBtn {
+.readDiv {
   grid-area: read;
-}
-
-.removeBtn {
-grid-area: remove;
 }
 
 #addBookForm {
@@ -79,9 +75,56 @@ grid-area: remove;
   border: 1px solid blue;
 }
 
+
+/* SLIDER START https://www.w3schools.com/howto/howto_css_switch.asp */
+.readLabel {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.readToggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.readSpan {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .14s;
+  border-radius: 34px;
+}
+
+.readSpan:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .14s;
+  border-radius: 50%;
+}
+
+input:checked+.readSpan {
+  background-color: #2196F3;
+}
+
+input:checked+.readSpan:before {
+  transform: translateX(26px);
+}
+
+
 /*
 make card look like google fonts card
-make read button a toggle switch
 make remove button a trashcan SVG
 
 */
