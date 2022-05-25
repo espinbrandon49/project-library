@@ -3,36 +3,85 @@
   margin: 0;
 }
 
-
+button {
+  border-radius: 0;
+  border: 1px solid gray;
+}
 
 .container {
+  display: grid;
   position: relative;
   border: 1px solid blue;
-  height: 800px;
-  width: 700px;
+  gap: 20px;
 }
 
 #display {
-  position: absolute;
+  position: relative;
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(auto, 1fr);
-  border: 1px solid black;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  align-content: start;
+  row-gap: 25px;
+  padding-bottom: 70px;
+  column-gap: 10px;
 }
 
 .libraryBook {
   display: grid;
-  border: 1px solid black;
-  height: 200px;
-  width: 200px;
+  height: auto;
+  width: minmax(200px);
+  
+  align-content: stretch;
+  background-color: orange;
+  border-radius: 7px;
+  padding-left: 5px;
+  grid-template-areas:
+    'author pages'
+    'title title'
+    'read remove';
+}
+
+.libraryBookInfo {
+  background-color: #f2eecb;
+  padding: 5px;
+}
+
+.authorDiv {
+  grid-area: author;
+}
+
+.pagesDiv {
+  grid-area: pages;
+}
+
+.titleDiv {
+  grid-area: title;
+}
+
+.readBtn {
+  grid-area: read;
+}
+
+.removeBtn {
+grid-area: remove;
 }
 
 #addBookForm {
+  display: grid;
   position: relative;
   display: none;
-  background-color: aliceblue;
+  background-color: rgb(240, 248, 255, .9);
   width: 400px;
   height: 400px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -300px;
   border: 1px solid blue;
 }
+
+/*
+make card look like google fonts card
+make read button a toggle switch
+make remove button a trashcan SVG
+
+*/
