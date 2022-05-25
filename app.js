@@ -9,7 +9,8 @@ const clearAll = document.getElementById('removeAll')
 const removeBtn = document.getElementsByClassName('removeBtn')
 const readBtn = document.getElementsByClassName('readBtn')
 const addNewBook = document.getElementById('addNewBook')
-const addBookForm = document.getElementById('addBookForm')  
+const addBookForm = document.getElementById('addBookForm')
+const readToggle = document.getElementsByClassName('readToggle')
 
 let myLibrary = []
 
@@ -18,14 +19,20 @@ function Book(title, author, pages, read) {
   this.author = author
   this.pages = pages
   this.read = read
+
+
+  
 }
 
 function addBooktoLibrary() {
   const readBook = () => yesInput.checked == true ? 'yes' : 'no'
+  //const readBook = () => yesInput.checked == true ? readToggle.checked = true : readToggle.checked = false
+
   let title = titleInput.value
   let author = authorInput.value
   let pages = pagesInput.value
   let read = readBook()
+  
   let newBook = new Book(title, author, pages, read)
   myLibrary.push(newBook)
   setLibrary()
@@ -41,39 +48,42 @@ const getLibrary = function () {
   myLibrary = JSON.parse(localStorage.getItem('library'))
 
   for (let i = 0; i < myLibrary.length; i++) {
-    let newDiv = document.createElement('div')
-    newDiv.classList.add('libraryBook')
-    newDiv.setAttribute('data-newdiv', `${i}`)
-
     let titleDiv = document.createElement('div')
     let authorDiv = document.createElement('div')
     let pagesDiv = document.createElement('div')
+    let readBtn = document.createElement('button')
+    let removeBtn = document.createElement('button')
+    let newDiv = document.createElement('div')
     let readDiv = document.createElement('div')
 
-    titleDiv.classList.add('titleDiv')
-    authorDiv.classList.add('authorDiv')
-    pagesDiv.classList.add('pagesDiv')
-    readDiv.classList.add('readDiv')
+    let readToggle = document.createElement('input')
+    readToggle.setAttribute('type', 'checkbox')
+
+    titleDiv.classList.add('titleDiv', 'libraryBookInfo')
+    authorDiv.classList.add('authorDiv', 'libraryBookInfo')
+    pagesDiv.classList.add('pagesDiv', 'libraryBookInfo')
+    readBtn.classList.add('readBtn')
+    removeBtn.classList.add('removeBtn')
+    readToggle.classList.add('readToggle')
+    newDiv.classList.add('libraryBook')
+    readDiv.classList.add('readDiv', 'libraryBookInfo')
+
+    newDiv.setAttribute('data-newdiv', `${i}`)
 
     titleDiv.textContent = myLibrary[i].title
-    authorDiv.textContent = myLibrary[i].author
-    pagesDiv.textContent = myLibrary[i].pages
-    readDiv.textContent = myLibrary[i].read
-
-    let readBtn = document.createElement('button')
-    readBtn.classList.add('readBtn')
+    authorDiv.innerHTML = `Author <br> ${myLibrary[i].author}`
+    pagesDiv.textContent = `Pgs ${myLibrary[i].pages}`
     readBtn.textContent = 'read'
-
-    let removeBtn = document.createElement('button')
-    removeBtn.classList.add('removeBtn')
     removeBtn.textContent = 'Remove Book'
+    readDiv.textContent = `Read: ${myLibrary[i].read}`
 
     newDiv.appendChild(titleDiv)
     newDiv.appendChild(authorDiv)
     newDiv.appendChild(pagesDiv)
-    newDiv.appendChild(readDiv)
     newDiv.appendChild(readBtn)
     newDiv.appendChild(removeBtn)
+    newDiv.appendChild(readToggle)
+    newDiv.appendChild(readDiv)
     display.appendChild(newDiv)
   }
 }
