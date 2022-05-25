@@ -7,18 +7,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>project library</title>
   <link rel="stylesheet" href="./style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+  </style>
 </head>
 
 <body>
   <div class="container">
-    <div class="addNewBook">
-      <button id="addNewBook">Add new book</button>
-      <button id="removeAll">Remove All</button>
+    <div class="titleSection">
+      <img class='titleItem odinhead' src="./odin-tiny.png" alt="tiny viking head icon">
+      <p class="greeting titleItem">Library <br> Odin Odinson</p>
+      <button class='titleItem' id="addNewBook"></button>
     </div>
     <div id="display">
     </div>
     <div class="addBookForm" id="addBookForm">
-      <form> 
+      <form>
         <div>
           <label for="'titleInput">Title</label>
           <input type="text" id="titleInput">
