@@ -11,18 +11,13 @@
 
 <body>
   <div class="container">
-    <p>
-      How do I delete an array item from local storage using the newDiv remove button?
-      
-      Any hints are appreciated.
-      
-      Thank you
-    </p>
-    <br><br>
-    <div id="display">
-
+    <div class="addNewBook">
+      <button id="addNewBook">Add new book</button>
+      <button id="removeAll">Remove All</button>
     </div>
-    <div class="formDiv">
+    <div id="display">
+    </div>
+    <div class="addBookForm" id="addBookForm">
       <form> 
         <div>
           <label for="'titleInput">Title</label>
@@ -40,13 +35,13 @@
           <legend>Read(Yes/No)</legend>
           <input type="radio" id="yesInput" value="yes" name="readInput">
           <label for="yesInput">Yes</label>
-          <input type="radio" id="noInput" value="no" name="readInput">
+          <input type="radio" id="noInput" value="no" name="readInput" checked>
           <label for="noInput">No</label>
         </fieldset>
       </form>
       <div>
         <button id="addBook">Add Book</button>
-        <button id="removeAll">Remove All</button>
+        
       </div>
     </div>
 
