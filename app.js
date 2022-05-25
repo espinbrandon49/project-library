@@ -55,11 +55,16 @@ const getLibrary = function () {
     let newDiv = document.createElement('div')
     let readDiv = document.createElement('div')
     let readToggle = document.createElement('input')
-    // BUTTON let readBtn = document.createElement('button')
+    let readLabel = document.createElement('label')
+    let readSpan = document.createElement('span')
+     // BUTTON let readBtn = document.createElement('button')
 
     readToggle.setAttribute('type', 'checkbox')
-    readToggle.classList.add('readToggle')
     readToggle.checked = myLibrary[i].read
+
+    readLabel.classList.add('readLabel')
+    readToggle.classList.add('readToggle')
+    readSpan.classList.add('readSpan')
 
     titleDiv.classList.add('titleDiv', 'libraryBookInfo')
     authorDiv.classList.add('authorDiv', 'libraryBookInfo')
@@ -73,18 +78,20 @@ const getLibrary = function () {
     authorDiv.innerHTML = `Author <br> ${myLibrary[i].author}`
     pagesDiv.textContent = `Pgs ${myLibrary[i].pages}`
     removeBtn.textContent = 'Remove Book'
-    readDiv.textContent = `Read: ${myLibrary[i].read}`
+    // BUTTON readDiv.textContent = `Read: ${myLibrary[i].read}`
     // BUTTON readBtn.textContent = 'read'
 
     newDiv.appendChild(titleDiv)
     newDiv.appendChild(authorDiv)
     newDiv.appendChild(pagesDiv)
-    
-    newDiv.appendChild(removeBtn)
-    newDiv.appendChild(readToggle)
+    newDiv.appendChild(readDiv)
+    readDiv.appendChild(readLabel)
+    readLabel.appendChild(readToggle)
+    readLabel.appendChild(readSpan)
+    readDiv.appendChild(removeBtn)
     display.appendChild(newDiv)
     // BUTTON newDiv.appendChild(readBtn)
-    //BUTTON newDiv.appendChild(readDiv)
+    
   }
 
 }
