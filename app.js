@@ -7,7 +7,7 @@ const noInput = document.getElementById('noInput')
 const addBook = document.getElementById('addBook')
 const clearAll = document.getElementById('removeAll')
 const removeBtn = document.getElementsByClassName('removeBtn')
-const readBtn = document.getElementsByClassName('readBtn')
+// BUTTON const readBtn = document.getElementsByClassName('readBtn')
 const addNewBook = document.getElementById('addNewBook')
 const addBookForm = document.getElementById('addBookForm')
 const readToggle = document.getElementsByClassName('readToggle')
@@ -19,24 +19,24 @@ function Book(title, author, pages, read) {
   this.author = author
   this.pages = pages
   this.read = read
-
-
-  
 }
 
 function addBooktoLibrary() {
-  const readBook = () => yesInput.checked == true ? 'yes' : 'no'
-  //const readBook = () => yesInput.checked == true ? readToggle.checked = true : readToggle.checked = false
+  // BUTTON const readBook = () => yesInput.checked == true ? 'yes' : 'no'
 
   let title = titleInput.value
   let author = authorInput.value
   let pages = pagesInput.value
-  let read = readBook()
+  let read = yesInput.checked
   
   let newBook = new Book(title, author, pages, read)
+  
   myLibrary.push(newBook)
+
   setLibrary()
+  
   addBookForm.style = 'display: none'
+  
   location.reload()
 }
 
@@ -51,41 +51,42 @@ const getLibrary = function () {
     let titleDiv = document.createElement('div')
     let authorDiv = document.createElement('div')
     let pagesDiv = document.createElement('div')
-    let readBtn = document.createElement('button')
     let removeBtn = document.createElement('button')
     let newDiv = document.createElement('div')
     let readDiv = document.createElement('div')
-
     let readToggle = document.createElement('input')
+    // BUTTON let readBtn = document.createElement('button')
+
     readToggle.setAttribute('type', 'checkbox')
+    readToggle.classList.add('readToggle')
+    readToggle.checked = myLibrary[i].read
 
     titleDiv.classList.add('titleDiv', 'libraryBookInfo')
     authorDiv.classList.add('authorDiv', 'libraryBookInfo')
     pagesDiv.classList.add('pagesDiv', 'libraryBookInfo')
-    readBtn.classList.add('readBtn')
     removeBtn.classList.add('removeBtn')
-    readToggle.classList.add('readToggle')
     newDiv.classList.add('libraryBook')
     readDiv.classList.add('readDiv', 'libraryBookInfo')
-
-    newDiv.setAttribute('data-newdiv', `${i}`)
+    // BUTTON readBtn.classList.add('readBtn')
 
     titleDiv.textContent = myLibrary[i].title
     authorDiv.innerHTML = `Author <br> ${myLibrary[i].author}`
     pagesDiv.textContent = `Pgs ${myLibrary[i].pages}`
-    readBtn.textContent = 'read'
     removeBtn.textContent = 'Remove Book'
     readDiv.textContent = `Read: ${myLibrary[i].read}`
+    // BUTTON readBtn.textContent = 'read'
 
     newDiv.appendChild(titleDiv)
     newDiv.appendChild(authorDiv)
     newDiv.appendChild(pagesDiv)
-    newDiv.appendChild(readBtn)
+    
     newDiv.appendChild(removeBtn)
     newDiv.appendChild(readToggle)
-    newDiv.appendChild(readDiv)
     display.appendChild(newDiv)
+    // BUTTON newDiv.appendChild(readBtn)
+    //BUTTON newDiv.appendChild(readDiv)
   }
+
 }
 
 if (!localStorage.library) {
@@ -95,10 +96,24 @@ if (!localStorage.library) {
   getLibrary()
 }
 
+/*
+// is for button
 const readBook = function () {
   for (let i = 0; i < readBtn.length; i++) {
     readBtn[i].addEventListener('click', () => {
-      myLibrary[i].read = myLibrary[i].read == 'no' ? 'yes' : 'no'
+      myLibrary[i].read = myLibrary[i].read == false ? true : false
+      setLibrary()
+      location.reload()
+    })
+  }
+}
+readBook()
+*/
+
+const readBook = function () {
+  for (let i = 0; i < readToggle.length; i++) {
+    readToggle[i].addEventListener('click', () => {
+      myLibrary[i].read = myLibrary[i].read == false ? true : false
       setLibrary()
       location.reload()
     })
@@ -117,6 +132,7 @@ const remove = function () {
 }
 remove()
 
+
 addNewBook.addEventListener('click', () => {
   addBookForm.style = 'display: block'
 })
@@ -131,3 +147,7 @@ clearAll.addEventListener('click', () => {
   localStorage.clear();
   location.reload()
 })
+
+console.log(myLibrary)
+
+//make a button look and act like a toggle switch instead of using an input[type = 'checkbox']
