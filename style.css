@@ -3,6 +3,30 @@
   margin: 0;
 }
 
-.container > p {
-  width: 300px;
+.container {
+  position: relative;
+}
+
+#display {
+  position: absolute;
+  display: grid;
+  height: 100%;
+  grid-auto-flow: column;
+  border: 1px solid black;
+  grid-template-columns: repeat(auto-fit, 1fr);
+}
+
+.libraryBook {
+  border: 1px solid black;
+}
+
+#addBookForm {
+  position: relative;
+  display: none;
+  background-color: aliceblue;
+  border: 1px solid blue;
+  width: 400px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
