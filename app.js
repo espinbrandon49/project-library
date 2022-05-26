@@ -5,7 +5,6 @@ const pagesInput = document.getElementById('pagesInput')
 const yesInput = document.getElementById('yesInput')
 const noInput = document.getElementById('noInput')
 const addBook = document.getElementById('addBook')
-const clearAll = document.getElementById('removeAll')
 const removeBtn = document.getElementsByClassName('removeBtn')
 const addNewBook = document.getElementById('addNewBook')
 const addBookForm = document.getElementById('addBookForm')
@@ -25,17 +24,12 @@ function addBooktoLibrary() {
   let author = authorInput.value
   let pages = pagesInput.value
   let read = yesInput.checked
-  
   let newBook = new Book(title, author, pages, read)
-  
   myLibrary.push(newBook)
-
   setLibrary()
-  
-  addBookForm.style = 'display: none'
-  
   location.reload()
 }
+addBook.addEventListener('click', addBooktoLibrary)
 
 const setLibrary = function () {
   localStorage.setItem('library', JSON.stringify(myLibrary))
@@ -54,14 +48,14 @@ const getLibrary = function () {
     let readToggle = document.createElement('input')
     let readLabel = document.createElement('label')
     let readSpan = document.createElement('span')
-
+    
+    newDiv.setAttribute('id', i)
     readToggle.setAttribute('type', 'checkbox')
     readToggle.checked = myLibrary[i].read
 
     readLabel.classList.add('readLabel')
     readToggle.classList.add('readToggle')
     readSpan.classList.add('readSpan')
-
     titleDiv.classList.add('titleDiv', 'libraryBookInfo')
     authorDiv.classList.add('authorDiv', 'libraryBookInfo')
     pagesDiv.classList.add('pagesDiv', 'libraryBookInfo')
@@ -114,16 +108,23 @@ const remove = function () {
 }
 remove()
 
+const unread = function () {
+  for (let i = 0; i < myLibrary.length; i++) {
+    if (myLibrary[i].read == false) {
+      console.log(myLibrary[i].read)
+      document.getElementById(i).style.border = '3px solid rgb(255,0,0, .1)'
+    }
+  }
+}
+unread()
 
 addNewBook.addEventListener('click', () => {
-  addBookForm.style = 'display: block'
+  addBookForm.style = 'width: 400px'
 })
 
 display.addEventListener('click', () => {
-  addBookForm.style = 'display: none'
+  addBookForm.style = 'width: 0'
   location.reload()
 })
 
-addBook.addEventListener('click', addBooktoLibrary)
-
-v
+myLibrary.length == 0 ? addBookForm.style = 'width: 400px' : myLibrary
