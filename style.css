@@ -1,7 +1,6 @@
 /*
-make card look like google fonts card
-make form slide out from left
-
+format form
+formatting for unread items, just a border
 */
 
 * {
@@ -26,7 +25,6 @@ make form slide out from left
   justify-content: start;
   align-items: center;
   gap: 20px;
-
 }
 
 .titleItem {
@@ -42,7 +40,7 @@ make form slide out from left
 }
 
 .greeting {
-  line-height: 30px;
+  line-height: 40px;
   font-size: 30px;
 }
 
@@ -60,17 +58,16 @@ make form slide out from left
   position: relative;
   display: grid;
   grid-auto-flow: row;
-  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   align-content: start;
-  row-gap: 25px;
-  padding-bottom: 70px;
-  column-gap: 10px;
+  gap: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .libraryBook {
   display: grid;
   height: auto;
-  width: minmax(310px);
   height: auto;
   align-content: stretch;
   background-color: orange;
@@ -90,7 +87,6 @@ make form slide out from left
   border: none;
   height: 34px;
   width: 34px;
-  
 }
 
 .libraryBookInfo {
@@ -101,7 +97,6 @@ make form slide out from left
 .authorDiv {
   grid-area: author;
   font-weight: 300;
-
 }
 
 strong {
@@ -114,7 +109,6 @@ strong {
   grid-area: pages;
   font-weight: 300;
   font-size: 14px;
-
 }
 
 .titleDiv {
@@ -135,9 +129,18 @@ strong {
   display: grid;
   position: relative;
   display: none;
+  margin-top: -700px;
   background-color: rgb(240, 248, 255, .9);
   width: 400px;
-  border: 1px solid blue;
+  border: rgb(240, 248, 255, .9);
+}
+form {
+  display: grid;
+  grid-auto-flow: row;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 200px;
+  border: 1px solid black;
 }
 
 
