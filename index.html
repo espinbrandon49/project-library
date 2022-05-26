@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,11 +10,8 @@
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
   </style>
 </head>
-
 <body>
   <div class="container">
-  
-  
     <div class="titleSection">
       <img class='titleItem odinhead' src="./odin-tiny.png" alt="tiny viking head icon">
       <p class="greeting titleItem">Library <br> Odin Odinson</p>
@@ -23,36 +19,39 @@
     </div>
     <div id="display">
     </div>
-
-  <div class="addBookForm formItems" id="addBookForm">
-    <form class="formItems">
-      <div class='formItems'>
-        <label class="formItems" for="titleInput">Title</label>
-        <input class="formItems" type="text" id="titleInput">
-      </div>
-      <div>
-        <label class="formItems" for="authorInput">Author</label>
-        <input class="formItems" type="text" id="authorInput">
-      </div>
-      <div class="formItems">
-        <label class="formItems" for="pagesInput">Pages</label>
-        <input class="formItems" type="number" id="pagesInput">
-      </div>
-      <fieldset class="formItems">
-        <legend class="formItems">Read(Yes/No)</legend>
-        <input class="formItems" type="radio" id="yesInput" value="yes" name="readInput">
-        <label class="formItems" for="yesInput">Yes</label>
-        <input class="formItems" type="radio" id="noInput" value="no" name="readInput" checked>
-        <label class="formItems" for="noInput">No</label>
-      </fieldset>
-      <div class="formItems">
-        <button class="formItems" id="addBook">Add Book</button>
-      </div>
-    </form>
-
+    <div class="addBookForm" id="addBookForm">
+      <form>
+        <div class='title'>
+          <label class="titleItems" for="titleInput">Title</label>
+          <input class="titleItems" type="text" id="titleInput">
+        </div>
+        <div class="author">
+          <label for="authorInput authorItems">Author</label>
+          <input class="authorItems" type="text" id="authorInput">
+        </div>
+        <div class="pages">
+          <label class="pagesItems" for="pagesInput">Pages</label>
+          <input class="pagesItems" type="number" id="pagesInput">
+        </div>
+        <fieldset>
+          <legend>Read (Yes/No)</legend>
+          <div class="radios">
+            <div>
+              <input type="radio" id="yesInput" value="yes" name="readInput">
+              <label for="yesInput">Yes</label>
+            </div>
+            <div>
+              <input type="radio" id="noInput" value="no" name="readInput" checked>
+              <label for="noInput">No</label>
+            </div>
+          </div>
+        </fieldset>
+        <div>
+          <button id="addBook">Add Book</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
   <script src="./app.js"></script>
 </body>
-
 </html>
