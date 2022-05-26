@@ -4,6 +4,12 @@
   font-family: 'roboto', serif;
 }
 
+body {
+  max-width: 1500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .container {
   display: grid;
   grid-template-areas:
@@ -58,7 +64,7 @@
   grid-column-end: 3;
   grid-row-start: 2;
   grid-auto-flow: row;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   align-content: start;
   gap: 20px;
   margin-left: 20px;
@@ -68,7 +74,6 @@
 
 .libraryBook {
   display: grid;
-  height: auto;
   height: auto;
   align-content: stretch;
   background-color: orange;
