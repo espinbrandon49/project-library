@@ -14,6 +14,8 @@
 
 <body>
   <div class="container">
+  
+  
     <div class="titleSection">
       <img class='titleItem odinhead' src="./odin-tiny.png" alt="tiny viking head icon">
       <p class="greeting titleItem">Library <br> Odin Odinson</p>
@@ -21,35 +23,35 @@
     </div>
     <div id="display">
     </div>
-    <div class="addBookForm" id="addBookForm">
-      <form>
-        <div>
-          <label for="'titleInput">Title</label>
-          <input type="text" id="titleInput">
-        </div>
-        <div>
-          <label for="authorInput">Author</label>
-          <input type="text" id="authorInput">
-        </div>
-        <div>
-          <label for="pagesInput">Pages</label>
-          <input type="number" id="pagesInput">
-        </div>
-        <fieldset>
-          <legend>Read(Yes/No)</legend>
-          <input type="radio" id="yesInput" value="yes" name="readInput">
-          <label for="yesInput">Yes</label>
-          <input type="radio" id="noInput" value="no" name="readInput" checked>
-          <label for="noInput">No</label>
-        </fieldset>
-        <div>
-          <button id="addBook">Add Book</button>
-        </div>
-      </form>
 
-    </div>
+  <div class="addBookForm formItems" id="addBookForm">
+    <form class="formItems">
+      <div class='formItems'>
+        <label class="formItems" for="titleInput">Title</label>
+        <input class="formItems" type="text" id="titleInput">
+      </div>
+      <div>
+        <label class="formItems" for="authorInput">Author</label>
+        <input class="formItems" type="text" id="authorInput">
+      </div>
+      <div class="formItems">
+        <label class="formItems" for="pagesInput">Pages</label>
+        <input class="formItems" type="number" id="pagesInput">
+      </div>
+      <fieldset class="formItems">
+        <legend class="formItems">Read(Yes/No)</legend>
+        <input class="formItems" type="radio" id="yesInput" value="yes" name="readInput">
+        <label class="formItems" for="yesInput">Yes</label>
+        <input class="formItems" type="radio" id="noInput" value="no" name="readInput" checked>
+        <label class="formItems" for="noInput">No</label>
+      </fieldset>
+      <div class="formItems">
+        <button class="formItems" id="addBook">Add Book</button>
+      </div>
+    </form>
 
   </div>
+</div>
   <script src="./app.js"></script>
 </body>
 
