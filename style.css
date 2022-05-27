@@ -148,6 +148,7 @@ strong {
   overflow: hidden;
   width: 0px;
   margin-right: -15px;
+  border-radius: 7px;
 }
 
 form {
